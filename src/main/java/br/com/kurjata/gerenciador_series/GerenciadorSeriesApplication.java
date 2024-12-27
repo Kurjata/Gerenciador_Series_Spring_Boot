@@ -25,15 +25,6 @@ public class GerenciadorSeriesApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		MainMenu mainMenu = new MainMenu();
 		mainMenu.menu();
-
-//		List<SeasonData> seasons = new ArrayList<>();
-//		for (int i = 1; i <= seriesData.totalSeasons(); i++) {
-//			json = apiConsumer.getData("https://www.omdbapi.com/?t=breaking+bad&Season=" + i + "&apikey=9c920167");
-//
-//			SeasonData seasonData = dataConverter.getData(json, SeasonData.class);
-//			seasons.add(seasonData);
-//		}
-//		seasons.forEach(System.out::println);
 	}
 }
 

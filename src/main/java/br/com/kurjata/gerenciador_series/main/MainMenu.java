@@ -1,9 +1,12 @@
 package br.com.kurjata.gerenciador_series.main;
 
+import br.com.kurjata.gerenciador_series.model.SeasonData;
 import br.com.kurjata.gerenciador_series.model.SeriesData;
 import br.com.kurjata.gerenciador_series.service.ApiConsumer;
 import br.com.kurjata.gerenciador_series.service.DataConverter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -17,12 +20,19 @@ public class MainMenu {
 
     public void menu(){
 
-        System.out.println("1 - Digite o nome da série para buscar");
+        System.out.println("Digite o nome da série para buscar");
         var serieName = scanner.nextLine();
         var json = apiConsumer.getData(URL + serieName.replace(" ", "+") + API_KEY);
         var seriesData = dataConverter.getData(json, SeriesData.class);
         System.out.println(seriesData);
 
-        //"https://www.omdbapi.com/?t=breaking+bad&apikey=9c920167"
+        List<SeasonData> seasons = new ArrayList<>();
+        for (int i = 1; i <= seriesData.totalSeasons(); i++) {
+            json = apiConsumer.getData(URL + serieName.replace(" ", "+") + "&Season=" + i + API_KEY);
+
+            SeasonData seasonData = dataConverter.getData(json, SeasonData.class);
+            seasons.add(seasonData);
+        }
+        seasons.forEach(System.out::println);
     }
 }
