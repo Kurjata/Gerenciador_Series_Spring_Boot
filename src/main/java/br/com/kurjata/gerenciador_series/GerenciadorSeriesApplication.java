@@ -1,18 +1,12 @@
 package br.com.kurjata.gerenciador_series;
 
-import br.com.kurjata.gerenciador_series.model.EpisodeData;
-import br.com.kurjata.gerenciador_series.model.SeasonData;
-import br.com.kurjata.gerenciador_series.model.SeriesData;
-import br.com.kurjata.gerenciador_series.service.ApiConsumer;
-import br.com.kurjata.gerenciador_series.service.DataConverter;
+
 import br.com.kurjata.gerenciador_series.main.MainMenu;
-import com.sun.tools.javac.Main;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @SpringBootApplication
 public class GerenciadorSeriesApplication implements CommandLineRunner {

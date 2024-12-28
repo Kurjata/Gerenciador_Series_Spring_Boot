@@ -1,10 +1,10 @@
 package br.com.kurjata.gerenciador_series.main;
 
+import br.com.kurjata.gerenciador_series.model.EpisodeData;
 import br.com.kurjata.gerenciador_series.model.SeasonData;
 import br.com.kurjata.gerenciador_series.model.SeriesData;
 import br.com.kurjata.gerenciador_series.service.ApiConsumer;
 import br.com.kurjata.gerenciador_series.service.DataConverter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,5 +34,12 @@ public class MainMenu {
             seasons.add(seasonData);
         }
         seasons.forEach(System.out::println);
+
+        for (int i = 0; i< seriesData.totalSeasons(); i++) {
+            List<EpisodeData> seasonEpisode = seasons.get(i).episodes();
+            for(int j = 0; j < seasonEpisode.size(); j++){
+                System.out.println(seasonEpisode.get(j).title());
+        }
     }
+}
 }
