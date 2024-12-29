@@ -6,8 +6,10 @@ import br.com.kurjata.gerenciador_series.model.SeriesData;
 import br.com.kurjata.gerenciador_series.service.ApiConsumer;
 import br.com.kurjata.gerenciador_series.service.DataConverter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class MainMenu {
 
@@ -38,5 +40,15 @@ public class MainMenu {
                 .flatMap(s -> s.episodes().stream())
                 .forEach(e -> System.out.println(e.title()));
 
+    List<EpisodeData> episodeData = seasons.stream()
+        .flatMap(s -> s.episodes().stream())
+        .collect(Collectors.toList());
+
+
+        System.out.println("\nTop 5 episódios com maior avaliação:");
+        episodeData.stream()
+            .sorted(Comparator.comparing(EpisodeData::imdbRating))
+            .limit(5)
+            .forEach(System.out::println);
     }
 }
