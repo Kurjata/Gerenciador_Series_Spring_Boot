@@ -14,7 +14,6 @@ public class MainMenu {
     private Scanner scanner = new Scanner(System.in);
     private ApiConsumer apiConsumer = new ApiConsumer();
     private DataConverter dataConverter = new DataConverter();
-
     private final String URL = "https://www.omdbapi.com/?t=";
     private final String API_KEY = "&apikey=9c920167";
 
@@ -35,11 +34,6 @@ public class MainMenu {
         }
         seasons.forEach(System.out::println);
 
-        for (int i = 0; i< seriesData.totalSeasons(); i++) {
-            List<EpisodeData> seasonEpisode = seasons.get(i).episodes();
-            for(int j = 0; j < seasonEpisode.size(); j++){
-                System.out.println(seasonEpisode.get(j).title());
-        }
-    }
+        seasons.forEach(t -> t.episodes().forEach(e -> System.out.println(e.title())));
 }
 }
