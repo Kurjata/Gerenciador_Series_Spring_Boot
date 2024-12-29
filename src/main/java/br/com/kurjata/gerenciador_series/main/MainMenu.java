@@ -34,6 +34,9 @@ public class MainMenu {
         }
         seasons.forEach(System.out::println);
 
-        seasons.forEach(t -> t.episodes().forEach(e -> System.out.println(e.title())));
-}
+        seasons.stream()
+                .flatMap(s -> s.episodes().stream())
+                .forEach(e -> System.out.println(e.title()));
+
+    }
 }
